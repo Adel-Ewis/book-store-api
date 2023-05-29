@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+
+    <changeSet id="20230526201113-1" author="adel ewis">
+        <createTable tableName="book">
+            <column name="id" type="uuid">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="name" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="description" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="author" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="type" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="price" type="double">
+                <constraints nullable="false" />
+            </column>
+            <column name="isbn" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+        </createTable>
+    </changeSet>
+
+
+    <changeSet id="20230526201113-1-data" author="adel ewis" context="faker">
+        <loadData
+                  file="config/liquibase/data/book.csv"
+                  separator=";"
+                  tableName="book"
+                  usePreparedStatements="true">
+            <column name="id" type="uuid"/>
+            <column name="name" type="string"/>
+            <column name="description" type="string"/>
+            <column name="author" type="string"/>
+            <column name="type" type="string"/>
+            <column name="price" type="numeric"/>
+            <column name="isbn" type="string"/>
+        </loadData>
+    </changeSet>
+</databaseChangeLog>

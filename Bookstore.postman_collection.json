@@ -1,0 +1,187 @@
+{
+	"info": {
+		"_postman_id": "1c043d57-7565-4975-8dab-da4acc581cee",
+		"name": "Bookstore",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "20116784"
+	},
+	"item": [
+		{
+			"name": "Checkout",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"books\": [\r\n        {\r\n            \"id\": \"c697a29d-5e08-4832-9b6c-2538435184d1\",\r\n            \"quantity\": 2,\r\n            \"name\": \"The Adventures of Alice\"\r\n        },\r\n        {\r\n            \"id\": \"3b0461d5-2ae0-4842-9e9d-7c8dcd01fb0c\",\r\n            \"quantity\": 1,\r\n            \"name\": \"The Catcher in the Rye\"\r\n        },\r\n        {\r\n            \"id\": \"e5f0e760-6f2f-4f92-8f17-7e82a9b2a190\",\r\n            \"quantity\": 1,\r\n            \"name\": \"The Great Gatsby\"\r\n        },\r\n        {\r\n            \"id\": \"a4cb27d9-32be-41f3-8975-0e788f183f91\",\r\n            \"quantity\": 1,\r\n            \"name\": \"The Hobbit\"\r\n        }\r\n    ],\r\n    \"promotion\": \"FICTION50\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/v1/checkout",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"checkout"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get all books",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/api/v1/books",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"books"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get book by id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/api/v1/books/a4cb27d9-32be-41f3-8975-0e788f183f91",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"books",
+						"a4cb27d9-32be-41f3-8975-0e788f183f91"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create book",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "accept",
+						"value": "*/*"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": \"Harry potter\",\r\n  \"description\": \"The novels chronicle the lives of a young wizard, Harry Potter, and his friends\",\r\n  \"author\": \"J.K rowling\",\r\n  \"type\": \"Fiction\",\r\n  \"price\": 17.5,\r\n  \"isbn\": \"12322122\"\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/v1/books",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"books"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update book",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "accept",
+						"value": "*/*"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"id\": \"a4cb27d9-32be-41f3-8975-0e788f183f91\",\r\n  \"name\": \"The Hobbits\",\r\n  \"description\": \"In the lord of the rings world\",\r\n  \"author\": \"Mark Anderson\",\r\n  \"type\": \"Fantasy\",\r\n  \"price\": 25,\r\n  \"isbn\": \"1232212552\"\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/v1/books/a4cb27d9-32be-41f3-8975-0e788f183f91",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"books",
+						"a4cb27d9-32be-41f3-8975-0e788f183f91"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "partially update book",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "accept",
+						"value": "*/*"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"id\": \"a4cb27d9-32be-41f3-8975-0e788f183f91\",\r\n  \"author\": \"Adel\",\r\n  \"price\": 30\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/v1/books/a4cb27d9-32be-41f3-8975-0e788f183f91",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"books",
+						"a4cb27d9-32be-41f3-8975-0e788f183f91"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

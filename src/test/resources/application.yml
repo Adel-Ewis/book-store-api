@@ -1,0 +1,42 @@
+server:
+  port: 8000
+spring:
+  profiles:
+    active:
+      - test
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    url: jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;MODE=LEGACY
+    username: sa
+    password:
+    hikari:
+      poolName: Hikari
+      auto-commit: false
+    driver-class-name: org.h2.Driver
+  h2:
+    console:
+      enabled: true
+      settings:
+        web-allow-others: true
+  jpa:
+    properties:
+      hibernate.jdbc.time_zone: UTC
+      hibernate.id.new_generator_mappings: true
+      hibernate.connection.provider_disables_autocommit: true
+    hibernate:
+      ddl-auto: none
+    database-platform: org.hibernate.dialect.H2Dialect
+
+  liquibase:
+    # Remove 'faker' if you do not want the sample data to be loaded automatically
+    contexts: test
+    change-log: classpath:config/liquibase/master.xml
+  messages:
+    basename: i18n/messages
+    encoding: UTF-8
+
+logging:
+  level:
+    ROOT: INFO
+    org.hibernate.SQL: INFO
+    com.aoewis.bookstore: DEBUG
